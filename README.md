@@ -1,26 +1,5 @@
 # k8s-ex
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
 ## 项目初始化
 
 ```sh
@@ -45,11 +24,28 @@ yarn build
 yarn test:unit
 ```
 
-用到的技术
-√ 是否使用 TypeScript 语法？  是
-√ 是否启用 JSX 支持？  是
-√ 是否引入 Vue Router 进行单页面应用开发？  是
-√ 是否引入 Pinia 用于状态管理？ 是
-√ 是否引入 Vitest 用于单元测试？ 是
+项目的目录结构
+├── public #公共资源目录
+│ ├── favicon.ico
+├── src #项目核心文件夹
+│ ├── api #api
+│ ├── assets #静态资源目录
+│ ├── components #组件目录
+│ ├── router #路由配置
+│ ├── store #pinia 配置文件目录
+│ ├── views #编写各个页面的目录,用于存放页面组件
+│ ├── App.vue #应用程序的根组件
+│ └── main.ts #应用程序的入口文件
+├── index.html #项目入口页面
+├── README.md
+├── tsconfig.json
+├── vite.config.ts #vite 的配置文件
+└── package.json #插件管理文件
+
+√ 是否使用 TypeScript 语法？ ... 否 / 是
+√ 是否启用 JSX 支持？ ... 否 / 是
+√ 是否引入 Vue Router 进行单页面应用开发？ ... 否 / 是
+√ 是否引入 Pinia 用于状态管理？ ... 否 / 是
+√ 是否引入 Vitest 用于单元测试？ ... 否 / 是
 √ 是否要引入一款端到端（End to End）测试工具？ » 不需要
-√ 是否引入 ESLint 用于代码质量检测？ ... 否 /
+√ 是否引入 ESLint 用于代码质量检测？ ... 否 / 是
