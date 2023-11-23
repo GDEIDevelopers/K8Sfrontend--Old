@@ -1,14 +1,13 @@
-<!-- login的表单组件
-可以与登录公用 -->
+<!-- login的表单组件 -->
 
 <template>
     <div class="login-container">
         <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="top">
             <el-form-item label="用户名" prop="username">
-                <el-input v-model="loginForm.username"></el-input>
+                <el-input v-model="loginForm.username" placeholder="输入用户名"></el-input>
             </el-form-item>
             <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="loginForm.password"></el-input>
+                <el-input type="password" v-model="loginForm.password" placeholder="输入密码"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="login">登录</el-button>

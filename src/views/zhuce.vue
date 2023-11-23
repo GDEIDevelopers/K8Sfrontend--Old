@@ -24,10 +24,10 @@ export default {
     data() {
         return {
             regForm: {
-                username: 'test',
-                password: '123'
+                username: '',
+                password: ''
             },
-            //注册规则
+            //注册规则，用户名和密码不能为空
             regRules: {
                 username: [
                     { required: true, message: '请输入用户名', trigger: 'blur' }

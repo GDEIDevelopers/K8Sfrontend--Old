@@ -1,3 +1,5 @@
+项目测试用
+
 # k8s-ex
 
 ## 项目初始化
@@ -23,10 +25,10 @@ yarn build
 ```sh
 yarn test:unit
 ```
+
       目录结构如下
 
 ![image](https://github.com/GDEIDevelopers/k8s-ex/assets/49276046/4983e0e7-4a0d-49f8-a7e2-8b5f40880599)
-
 
 使用 TypeScript 语法
 
