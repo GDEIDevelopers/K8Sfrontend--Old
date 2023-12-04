@@ -1,133 +1,81 @@
-<!-- login的表单组件
-
-<template>
-    <div class="login-container">
-        <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="top">
-            <el-form-item label="用户名" prop="username">
-                <el-input v-model="loginForm.username" placeholder="输入用户名"></el-input>
-            </el-form-item>
-            <el-form-item label="密码" prop="password">
-                <el-input type="password" v-model="loginForm.password" placeholder="输入密码"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="login">登录</el-button>
-                <el-button type="primary" @click="toReg">注册</el-button>
-            </el-form-item>
-        </el-form>
-    </div>
-</template>
-
-
-<script>
-export default {
-    name: 'Login',
-    data() {
-        return {
-            loginForm: {
-                username: '',
-                password: ''
-            },
-            loginRules: {
-                username: [
-                    { required: true, message: '请输入用户名', trigger: 'blur' }
-                ],
-                password: [
-                    { required: true, message: '请输入密码', trigger: 'blur' }
-                ]
-            },
-
-        };
-    },
-    methods: {
-        login() {
-            this.$refs.loginForm.validate(valid => {
-                if (valid) {
-                    // 登录逻辑，可以发送请求到后端进行验证
-                    // 数据由v-model双向绑定
-                    console.log('登录成功');
-                    console.log(this.loginForm.username);
-                    console.log(this.loginForm.password);
-                    // 登录成功后跳转到首页
-                    this.$router.push('/Home');
-                } else {
-                    console.log('表单验证失败');
-                }
-            });
-        },
-        toReg() {
-            //跳转去注册
-            this.$router.push('/Zhuce');
-        }
-    }
-};
-</script>
-
-<style scoped>
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-</style> -->
-
 <template>
     <div class="login-page">
+        <!-- 整个登录表单 -->
         <div class="center-container">
+            <!-- 左半部分，存放图片 -->
             <div class="left-section">
                 <img src="../assets/loginOrReg/灯泡图案.png" alt="Image">
             </div>
+
+            <!-- 右半部分 -->
             <div class="right-section">
+                <!-- 右边的上半部分，用于登录表单 -->
                 <div class="top-section">
                     <div class="form-container"> <!-- 新增的div -->
-                        <form class="login-form">
-                            <el-input placeholder="Username" style="margin-bottom: 20px;"></el-input>
-                            <el-input type="password" placeholder="Password" style="margin-bottom: 20px;"></el-input>
-                            <el-button type="primary" @click="login"
-                                style="width: 200px; margin-bottom: 20px;">登录</el-button>
-                        </form>
+                        <el-form class="login-form">
+                            <div class="form-top">
+                                <div class="title">
+                                    统一身份认证
+                                    <el-link type="info" href="#">手机/邮箱</el-link>
+                                </div>
+                                <div class="right">
+                                    <el-link type="info" href="#" style="font-size: 11px;">扫码登录<img
+                                            src="../assets/loginOrReg/qrCode.png"></el-link>
+                                </div>
+                            </div>
+                            <el-divider />
+                            <el-input id="username" placeholder="用户名" v-model="loginForm.username"
+                                style="margin-bottom: 20px;"></el-input>
+                            <el-input id="password" type="password" placeholder="密码" v-model="loginForm.password"
+                                show-password style="margin-bottom: 10px;">
+                            </el-input>
+                            <div class="remember-row">
+                                <el-checkbox v-model="rememberMe">一周内免登录</el-checkbox>
+                                <a href="#" class="forgot-password">忘记密码</a>
+                            </div>
+                            <el-button type="primary" @click="login" class="login-button">登录</el-button>
+                        </el-form>
                     </div>
                 </div>
+                <!-- 右边的底部栏，用于第三方API -->
                 <div class="bottom-section">
-                    第三方登录的API接口
-                    <!-- 这里放置第三方登录的按钮或者其他元素 -->
+                    <div class="other-login">
+                        <el-link type="primary" href="#">其它登录方式</el-link>
+                        <div class="icon-container">
+                            <a href="#"><img src="../assets/loginOrReg/qq.png"></a>
+                            <a href="#"><img src="../assets/loginOrReg/wechat.png"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<script>
+<script >
 export default {
     name: 'LoginPage',
     data() {
         return {
-            username: '',
-            password: ''
+            loginForm: {
+                username: '',
+                password: ''
+            }
         };
     },
     methods: {
         login() {
-            this.$refs.loginForm.validate(valid => {
-                if (valid) {
-                    // 登录逻辑，可以发送请求到后端进行验证
-                    // 数据由v-model双向绑定
-                    console.log('登录成功');
-                    console.log(this.loginForm.username);
-                    console.log(this.loginForm.password);
-                    // 登录成功后跳转到首页
-                    this.$router.push('/Home');
-                } else {
-                    console.log('表单验证失败');
-                }
-            });
+            console.log('登录成功');
+            console.log(this.loginForm.username);
+            console.log(this.loginForm.password);;
         },
         toReg() {
             //跳转去注册
             this.$router.push('/Zhuce');
         }
+
     }
-    // 这里可以添加你自己的逻辑代码
+
 }
 </script>
 
@@ -138,25 +86,21 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100vh;
-
-    /* 灰色背景 */
-    /* 页面样式 */
 }
 
 .center-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     /* 边框光芒效果 */
-    border-radius: 10px;
+    border-radius: 15px;
     /* 圆角边框 */
-    padding: 20px;
+    padding: 0px;
     /* 内边距 */
-    /* background-color: #a35d5d; */
-    width: 600px;
+    width: 610px;
     /* 宽度 */
-    height: 350px;
+    height: 400px;
     /* 高度 */
 }
 
@@ -168,8 +112,9 @@ export default {
 }
 
 .left-section img {
-    max-width: 450px;
-    max-height: 280px;
+    /* 左侧的图片大小*/
+    /* max-width: 360px; */
+    max-height: 250px;
 }
 
 .right-section {
@@ -191,31 +136,100 @@ export default {
 .bottom-section {
     /* 下半部分样式 */
     flex: 1;
+}
+
+.other-login {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-color: #a35d5d; */
+    margin-bottom: 20px;
+    justify-content: flex-end;
+    /* 将内容向右对齐 */
+}
+
+.other-login-link {
+    font-size: 14px;
+    margin-left: 10px;
+    /* 调整链接与图标的间距 */
+    text-decoration: none;
+    color: #333;
+}
+
+.icon-container {
+    margin-left: 20px;
+    /* 添加左侧间距 */
+}
+
+.icon-container img {
+    /* 图片大小 */
+    width: 35px;
+    height: 35px;
+    margin-right: 20px;
 }
 
 .form-container {
     background-color: #ffffff;
     /* 登录表单的外层DIV的灰色背景 */
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
 }
 
 .login-form {
     /* 登录表单样式 */
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
+}
 
-    input {
-        /* 输入框样式 */
-    }
+.login-form .form-row {
+    margin-bottom: 20px;
+}
 
-    button {
-        /* 按钮样式 */
-    }
+.login-form .form-row label {
+    width: 100px;
+}
+
+/* 登录按钮的样式 */
+.login-button {
+    width: 325px;
+    /* 调整按钮高度 */
+    height: 45px;
+    margin-bottom: 15px;
+    font-size: large;
+}
+
+.form-top {
+    text-align: left;
+    font-size: 18px;
+    color: #3271AD;
+    letter-spacing: 1px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    flex: 1;
+    font-weight: bold;
+}
+
+.right {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.right img {
+    width: 40px;
+}
+
+.remember-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.forgot-password {
+    font-size: 12px;
+    float: left;
 }
 </style>
