@@ -49,7 +49,7 @@
               </div>
               <el-button
                 type="primary"
-                @click="login"
+                @click="onSubmit"
                 class="login-button"
                 :disabled="!canSubmit"
                 >登录</el-button
@@ -73,22 +73,52 @@
 </template>
 
 <script>
+import { login } from "@/api/manager.js";
+import { ElNotification } from "element-plus";
+
 export default {
   name: "LoginPage",
   data() {
     return {
       loginForm: {
-        username: "",
-        password: "",
+        username: "testadmin",
+        password: "Tueu38p5hhraeg95",
       },
+      rememberMe: false,
     };
   },
 
   methods: {
-    login() {
-      console.log("登录成功");
-      console.log(this.loginForm.username);
-      console.log(this.loginForm.password);
+    onSubmit() {
+      console.log("登录按钮点击");
+      login(this.loginForm.username, this.loginForm.password)
+        .then((res) => {
+          console.log(res);
+          if (res.data.status == 0) {
+            //判断status是否为0
+            // 为0给一个提示框
+            ElNotification({
+              message: "登录成功",
+              type: "success",
+              duration: 3000,
+            });
+          } else {
+            ElNotification({
+              title: "Warning",
+              message: "失败",
+              type: "warning",
+              duration: 3000,
+            });
+          }
+        })
+        .catch((err) => {
+          ElNotification({
+            title: "Error",
+            message: err.response.data || "请求失败",
+            type: "error",
+            duration: 3000,
+          });
+        });
     },
 
     toReg() {
