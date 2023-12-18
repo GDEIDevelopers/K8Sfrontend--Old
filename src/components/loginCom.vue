@@ -93,15 +93,16 @@ export default {
       console.log("登录按钮点击");
       login(this.loginForm.username, this.loginForm.password)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.data.status == 0) {
             //判断status是否为0
-            // 为0给一个提示框
             ElNotification({
               message: "登录成功",
               type: "success",
               duration: 3000,
             });
+            // const cookie = useCookies();
+            // cookie.set("admin-token", res.data.data.token);
           } else {
             ElNotification({
               title: "Warning",
@@ -114,7 +115,7 @@ export default {
         .catch((err) => {
           ElNotification({
             title: "Error",
-            message: err.response.data || "请求失败",
+            message: "请求失败",
             type: "error",
             duration: 3000,
           });
