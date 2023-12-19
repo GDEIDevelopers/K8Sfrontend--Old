@@ -17,12 +17,16 @@ const router = createRouter({
     {
       path: "/Home",
       name: "Home",
-      meta: {
-        requireAuth: true, //此时表示进入这个路由是需要登录的
-      },
+      meta: { requireAuth: true },
       component: () => import("../views/Home.vue"),
     },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token");
+  if (to.name !== "Login" && !token) next({ name: "Login" });
+  else next();
 });
 
 export default router;

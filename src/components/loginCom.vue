@@ -90,10 +90,9 @@ export default {
 
   methods: {
     onSubmit() {
-      console.log("登录按钮点击");
       login(this.loginForm.username, this.loginForm.password)
         .then((res) => {
-          // console.log(res);
+          // checkToken();
           if (res.data.status == 0) {
             //判断status是否为0
             ElNotification({
@@ -101,8 +100,10 @@ export default {
               type: "success",
               duration: 3000,
             });
-            // const cookie = useCookies();
-            // cookie.set("admin-token", res.data.data.token);
+            // console.log(res.data.data.token);
+            // 将token储存到localStorage
+            const { token } = res.data.data.token;
+            localStorage.setItem("token", res.data.data.token);
           } else {
             ElNotification({
               title: "Warning",
