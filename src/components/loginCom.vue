@@ -25,20 +25,12 @@
                   /></el-link>
                 </div>
               </div>
-              <el-divider />
-              <el-input
-                id="username"
-                placeholder="用户名"
-                v-model="loginForm.username"
-                style="margin-bottom: 20px"
-              ></el-input>
-              <el-input
-                id="password"
                 type="password"
                 placeholder="密码"
                 v-model="loginForm.password"
                 show-password
                 style="margin-bottom: 10px"
+
               >
               </el-input>
               <div class="remember-row">
@@ -47,7 +39,7 @@
               </div>
               <el-button
                 type="primary"
-                @click="login"
+
                 class="login-button"
                 :disabled="!canSubmit"
                 >登录</el-button
@@ -71,31 +63,19 @@
 </template>
 
 <script>
+
 export default {
   name: "LoginPage",
   data() {
     return {
       loginForm: {
-        username: "",
-        password: "",
-      },
-    };
-  },
-  methods: {
-    login() {
-      console.log("登录成功");
-      console.log(this.loginForm.username);
-      console.log(this.loginForm.password);
-    },
+
     toReg() {
       //跳转去注册
       this.$router.push("/Zhuce");
     },
   },
-  computed: {
-    canSubmit() {
-      //当且仅当用户名和密码输入框都有内容时，登录按钮才能点击，
-      //否则为灰色状态不可点击
+
       const { username, password } = this.loginForm;
       return Boolean(username && password);
     },

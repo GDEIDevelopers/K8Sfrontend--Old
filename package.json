@@ -11,6 +11,7 @@
     "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false"
   },
   "dependencies": {
+    "@vueuse/integrations": "^10.7.0",
     "axios": "^1.6.2",
     "element-plus": "^2.4.2",
     "pinia": "^2.1.7",

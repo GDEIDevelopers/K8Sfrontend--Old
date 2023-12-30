@@ -39,3 +39,6 @@ yarn test:unit
 引入 Pinia 用于状态管理
 
 引入 Vitest 用于单元测试
+
+node 版本为 v20.9.0
+npm 版本为 v10.1.0
